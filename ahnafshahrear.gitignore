@@ -1,0 +1,4 @@
+# This is a gitignore file
+.cph/
+.vscode/
+*.bin
