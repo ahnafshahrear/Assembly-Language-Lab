@@ -1,62 +1,56 @@
-; write an assembly language program that will read a string and then make the string in it's 
-; reverse form
+;ASSEMBLY CODE TO READ A STRING & REVERSE IT
 
 .MODEL SMALL
 
 .STACK 100H
 
 .DATA
-
-VAR1 DB 40 DUP(?)
-VAR2 DB ?
+INPUT DB 50 DUP(?)
 NEWLINE DB 0AH,0DH,'$'
-.CODE
 
+.CODE
 MAIN PROC
-    mov ax,@DATA
-    mov ds,ax
+    MOV AX, @DATA
+    MOV DS, AX
     
-    MOV AH,1
-    MOV SI,0
-    GETSTRING:
-        MOV AH,1
+    MOV AH, 1
+    MOV SI, 0
+    
+    STRING_INPUT:
+        MOV AH, 1
         INT 21H
-        CMP AL,0DH
-        JE END_GETSTRING
-        MOV VAR1+SI,AL
-       
+        CMP AL, 0DH
+        JE END_STRING_INPUT
+        MOV INPUT+SI, AL
         INC SI
-        JMP GETSTRING
+        JMP STRING_INPUT   
+        
+    END_STRING_INPUT:
     
-    END_GETSTRING:
-    MOV VAR1+SI,'$'
-    CALL PRINTLINE
+    MOV INPUT+SI, '$'    
+    CALL PRINT_NEWLINE
     
-    MOV CX,SI
-    MOV AH,2
-    PRINTSTRING:
+    MOV CX, SI
+    MOV AH, 2
+    PRINT_STRING:
         DEC SI
-        MOV  DL, VAR1[SI]
-        INT 21H   
-    LOOP PRINTSTRING
-   
-    MOV AH,4CH
+        MOV DL, INPUT[SI]
+        INT 21H
+        LOOP PRINT_STRING
+        
+    MOV AH, 4CH
     INT 21H
-    
-    MAIN ENDP 
-    
-    PRINTLINE PROC
+        
+    PRINT_NEWLINE PROC
         PUSH DX
         PUSH AX
-        LEA DX,NEWLINE
-        MOV AH,9
+        LEA DX, NEWLINE
+        MOV AH, 9
         INT 21H
         POP AX
         POP DX
         RET
-        PRINTLINE ENDP 
+        PRINT_NEWLINE ENDP 
         
 END MAIN
-
-
-    
+        
