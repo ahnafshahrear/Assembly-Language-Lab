@@ -13,10 +13,9 @@
 
 NEWLINE DB 0AH,0DH,'$' 
 TEXT DB 'HELLO WORLD','$'
-PATTERN DB 'ELLO','$'  
+PATTERN DB 'HELL','$'  
 FOUND DB 'SUBSTRING FOUND','$'
 NOT_FOUND DB 'SUBSTRING NOT FOUND','$'
-INDEX DB -1 
 
 .CODE
 
@@ -24,25 +23,28 @@ MAIN PROC
 
     MOV AX, @DATA
     MOV DS, AX        
-                  
+        
+    MOV SI, 0    
+                      
     CHECK:
-        MOV DI, -1
-        MOV SI, INDEX
+        MOV DI, 0  
+        PUSH SI
         
         ITERATE:  
-            INC SI
+            MOV AH, TEXT[SI]
+            MOV AL, PATTERN[DI]   
             INC DI
-            MOV AH, TEXT[DI]
-            MOV AL, PATTERN[DI]  
+            INC SI
             CMP AL, '$'
-            JE FOUND_MSG
+            JE FOUND_MSG  
             CMP AH, AL  
             JE ITERATE
             JNE UPDATE_INDEX    
         
         UPDATE_INDEX:
-            INC INDEX
-            MOV AH, TEXT[INDEX]
+            POP SI
+            INC SI
+            MOV AH, TEXT[SI]
             CMP AH, '$'
             JE NOT_FOUND_MSG
             JMP CHECK    
