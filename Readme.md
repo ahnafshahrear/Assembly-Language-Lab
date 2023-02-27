@@ -6,7 +6,7 @@
 - Gmail - ahnafshahrearkhan@gmail.com
 
 ## Language
-- Matlab
+- Assembly Language
 
 ## Index
 
