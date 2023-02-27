@@ -15,7 +15,8 @@ NEWLINE DB 0AH,0DH,'$'
 
 .CODE
 
-MAIN PROC 
+MAIN PROC  
+    
     MOV AX, @DATA
     MOV DS, AX
     
@@ -43,7 +44,7 @@ MAIN PROC
         
         CMP DL, 'A'
         JL NO_CHANGE      
-        CMP DL, 'z'
+        CMP DL, 'Z'
         JG CHECK_LOWER
         XOR DL, 32
         JMP NO_CHANGE
