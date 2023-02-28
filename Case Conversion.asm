@@ -34,7 +34,10 @@ MAIN PROC
         
     END_STRING_INPUT: 
                       
-    CALL PRINT_NEWLINE                  
+    MOV AH, 9
+    LEA DX, NEWLINE
+    INT 21H
+               
     MOV DI, 0
     
     CASE_CHANGE:
@@ -68,14 +71,7 @@ MAIN PROC
     INT 21H
     
     MOV AH, 4CH
-    INT 21H  
-    
-    PRINT_NEWLINE PROC
-        LEA DX, NEWLINE
-        MOV AH, 9
-        INT 21H
-        RET
-        PRINT_NEWLINE ENDP 
+    INT 21H 
 
 END MAIN
     

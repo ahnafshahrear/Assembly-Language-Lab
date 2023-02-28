@@ -38,7 +38,9 @@ MAIN PROC
         
     END_STRING_INPUT: 
                       
-    CALL PRINT_NEWLINE                  
+    MOV AH, 9
+    LEA DX, NEWLINE
+    INT 21H                 
         
     MOV DI, 0        
     CHECK: 
@@ -88,21 +90,9 @@ MAIN PROC
         MOV DL, BIG
         INT 21H
         JMP EXIT    
-        
-    
+      
     MOV AH, 4CH
-    INT 21H  
-    
-    PRINT_NEWLINE PROC
-        PUSH DX
-        PUSH AX
-        LEA DX, NEWLINE
-        MOV AH, 9
-        INT 21H
-        POP AX
-        POP DX
-        RET
-        PRINT_NEWLINE ENDP   
+    INT 21H
     
     EXIT:
 
