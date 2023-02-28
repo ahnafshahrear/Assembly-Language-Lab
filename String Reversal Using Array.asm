@@ -10,7 +10,7 @@
 
 .DATA
 
-INPUT DB 50 DUP(?)
+INPUT DB 50 DUP('$')
 NEWLINE DB 0AH,0DH,'$'
 
 .CODE
@@ -33,8 +33,9 @@ MAIN PROC
         
     END_STRING_INPUT:
     
-    MOV INPUT+SI, '$'    
-    CALL PRINT_NEWLINE
+    MOV AH, 9
+    LEA DX, NEWLINE
+    INT 21H
     
     MOV CX, SI
     MOV AH, 2
@@ -43,16 +44,6 @@ MAIN PROC
         MOV DL, INPUT[SI]
         INT 21H
         LOOP PRINT_STRING
-        
-    MOV AH, 4CH
-    INT 21H
-        
-    PRINT_NEWLINE PROC
-        LEA DX, NEWLINE
-        MOV AH, 9
-        INT 21H
-        RET
-        PRINT_NEWLINE ENDP 
         
 END MAIN
         
