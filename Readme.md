@@ -35,5 +35,5 @@
 ### 3(a) Count Vowels, Consonants, Digits & Spaces
 - Write an assembly language program to implement a counting program that will read a string (a line of characters of letters, digits, punctuation symbols, and others) as input and then count the number of Vowels, Consonants, Digits, and Spaces in the string as output. Your program must contain necessary messages for formatted input and output.
 
-### 3(b) Sorting String
+### 3(b) Sorting String ✓
 - Write an assembly language program to implement a sorting program that will read a string (a word of letters of English alphabet either all in uppercase or all in lowercase but not both) as input and then sort the letters in the word in alphabetically (i) ascending order (ii) descending order. Your program must contain necessary messages for formatted input and output.

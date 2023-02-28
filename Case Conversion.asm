@@ -71,13 +71,9 @@ MAIN PROC
     INT 21H  
     
     PRINT_NEWLINE PROC
-        PUSH DX
-        PUSH AX
         LEA DX, NEWLINE
         MOV AH, 9
         INT 21H
-        POP AX
-        POP DX
         RET
         PRINT_NEWLINE ENDP 
 
