@@ -42,7 +42,8 @@ MAIN PROC
     LEA DX, NEWLINE
     INT 21H                 
         
-    MOV DI, 0        
+    MOV DI, 0     
+   
     CHECK: 
         MOV DL, INPUT[DI]
         INC DI
@@ -56,6 +57,7 @@ MAIN PROC
             CMP DL, 'Z'
             JLE CAPITAL
             JMP CHECK
+
         NO:   
             CMP FLAG, 1
             JE FOUND
@@ -77,6 +79,7 @@ MAIN PROC
         MOV SMALL, DL 
         MOV FLAG, 1
         JMP CAPITAL
+
     UPDATE_BIG: 
         MOV BIG, DL
         MOV FLAG, 1
@@ -90,9 +93,6 @@ MAIN PROC
         MOV DL, BIG
         INT 21H
         JMP EXIT    
-      
-    MOV AH, 4CH
-    INT 21H
     
     EXIT:
 
