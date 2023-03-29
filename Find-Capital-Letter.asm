@@ -89,7 +89,10 @@ MAIN PROC
         MOV AH, 2
         MOV DL, SMALL
         INT 21H
-        CALL PRINT_NEWLINE
+        MOV AH, 9
+        LEA DX, NEWLINE
+        INT 21H
+        MOV AH, 2
         MOV DL, BIG
         INT 21H
         JMP EXIT    
