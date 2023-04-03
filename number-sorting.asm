@@ -1,10 +1,3 @@
-;AHNAF SHAHREAR KHAN
-;COMPUTER SCIENCE & ENGINEERING
-;UNIVERSITY OF RAJSHAHI
-
-;ASSEMBLY CODE TO TAKE ARRAY OF NUMBER AS INPUT & SORT IT, N<=9  
-
-
 .MODEL SMALL
 
 .STACK 100H
@@ -18,7 +11,7 @@ INPUT DB 50 DUP('$')
 
 MAIN PROC
 
-    MOV AX, @DATA
+    MOV AX, DATA
     MOV DS, AX        
         
     MOV SI, 0    
@@ -28,7 +21,7 @@ MAIN PROC
         INT 21H
         CMP AL, 0DH
         JE END_INPUT 
-        MOV INPUT+SI, AL
+        MOV INPUT[SI], AL
         INC SI
         JMP START_INPUT
     
@@ -39,6 +32,7 @@ MAIN PROC
     INT 21H
     
     MOV SI, 0
+    
     LOOP1:
         MOV DI, SI
         
@@ -48,20 +42,17 @@ MAIN PROC
         
         LOOP2:
             INC DI
-            MOV AH, INPUT[SI]
-            MOV AL, INPUT[DI] 
-            CMP AL, '$'
+            CMP INPUT[DI], '$'
             JE END_LOOP2
-            CMP AH, AL
+            CMP AH, INPUT[DI]
             JG SWAP 
             JMP LOOP2
         
         SWAP:
-            MOV BH, AH
-            MOV AH, AL
-            MOV AH, BH
-            MOV INPUT[DI], AH
-            MOV INPUT[SI], AL
+            MOV AL, AH
+            MOV AH, INPUT[DI]
+            MOV INPUT[SI], AH
+            MOV INPUT[DI], AL
             JMP LOOP2
         
         END_LOOP2:
