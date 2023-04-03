@@ -1,9 +1,3 @@
-;AHNAF SHAHREAR KHAN
-;COMPUTER SCIENCE & ENGINEERING
-;UNIVERSITY OF RAJSHAHI
-
-;ASSEMBLY CODE TO CHECK IF N IS EVEN OR ODD, N<=9
-
 .MODEL SMALL
 
 .STACK 100H
@@ -17,13 +11,13 @@ ODD_MSG DB 0AH,0DH,'ODD','$'
 
 MAIN PROC  
     
-    MOV AX, @DATA
+    MOV AX, DATA
     MOV DS, AX
       
     MOV AH, 1
     INT 21H      
     
-    SUB AL, '0'      
+    SUB AL, 48      
     AND AL, 00000001B
     CMP AL, 0
     JE PRINT_EVEN
@@ -35,12 +29,11 @@ MAIN PROC
         INT 21H
         JMP EXIT
         
-    PRINT_ODD:
+    PRINT_ODD:    
         LEA DX, ODD_MSG
         MOV AH, 9
         INT 21H
 
     EXIT:
              
-END MAIN
-    
+END MAIN   

@@ -15,7 +15,7 @@ MAIN PROC
       
     MOV AH, 1
     INT 21H      
-    SUB AL, 48D      
+    SUB AL, 48      
     MOV BL, 0   
      
     SUM:
@@ -28,7 +28,7 @@ MAIN PROC
     LEA DX, NEWLINE
     INT 21H
     
-    ADD BL, 48D
+    ADD BL, 48
     MOV DL, BL
     MOV AH, 2
     INT 21H
