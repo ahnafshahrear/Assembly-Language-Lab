@@ -1,9 +1,3 @@
-;AHNAF SHAHREAR KHAN
-;COMPUTER SCIENCE & ENGINEERING
-;UNIVERSITY OF RAJSHAHI
-
-;ASSEMBLY CODE TO CALCULATE SUMMATION FROM 1-N, N<=3
-
 .MODEL SMALL
 
 .STACK 100H
@@ -16,13 +10,12 @@ NEWLINE DB 0AH,0DH,'$'
 
 MAIN PROC  
     
-    MOV AX, @DATA
+    MOV AX, DATA
     MOV DS, AX
       
     MOV AH, 1
     INT 21H      
-    
-    SUB AL, '0'      
+    SUB AL, 48D      
     MOV BL, 0   
      
     SUM:
@@ -30,15 +23,14 @@ MAIN PROC
         DEC AL 
         CMP AL, 0
         JG SUM
-        
+    
+    MOV AH, 9    
     LEA DX, NEWLINE
-    MOV AH, 9
     INT 21H
     
-    ADD BL, '0'
+    ADD BL, 48D
     MOV DL, BL
     MOV AH, 2
     INT 21H
 
-END MAIN
-    
+END MAIN    
