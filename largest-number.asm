@@ -1,9 +1,3 @@
-;AHNAF SHAHREAR KHAN
-;COMPUTER SCIENCE & ENGINEERING
-;UNIVERSITY OF RAJSHAHI
-
-;ASSEMBLY CODE TO TAKE ARRAY OF NUMBER AS INPUT & FIND MAX N, N<=9  
-
 .MODEL SMALL
 
 .STACK 100H
@@ -17,7 +11,7 @@ INPUT DB 50 DUP('$')
 
 MAIN PROC
 
-    MOV AX, @DATA
+    MOV AX, DATA
     MOV DS, AX        
         
     MOV SI, 0    
@@ -27,7 +21,7 @@ MAIN PROC
         INT 21H
         CMP AL, 0DH
         JE END_INPUT 
-        MOV INPUT+SI, AL
+        MOV INPUT[SI], AL
         INC SI
         JMP START_INPUT
     
@@ -38,6 +32,7 @@ MAIN PROC
     INT 21H
     
     MOV SI, 0
+    
     LOOP1:
         MOV BL, INPUT[SI]   
         CMP BL, '$'
