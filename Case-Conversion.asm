@@ -1,23 +1,17 @@
-;AHNAF SHAHREAR KHAN
-;COMPUTER SCIENCE & ENGINEERING
-;UNIVERSITY OF RAJSHAHI
-
-;ASSEMBLY CODE TO CONVERT CASE OF STRING
-
 .MODEL SMALL
 
 .STACK 100H
 
 .DATA
 
-INPUT DB 40 DUP('$') 
+INPUT DB 50 DUP('$') 
 NEWLINE DB 0AH,0DH,'$'
 
 .CODE
 
 MAIN PROC  
     
-    MOV AX, @DATA
+    MOV AX, DATA
     MOV DS, AX
     
     MOV SI, 0   
@@ -44,21 +38,21 @@ MAIN PROC
         CMP DL, '$'
         JE END_CASE_CHANGE
         
-        CMP DL, 'A'
-        JL NO_CHANGE      
-        CMP DL, 'Z'
+        CMP DL, 65
+        JL UPDATE      
+        CMP DL, 90
         JG CHECK_LOWER
         XOR DL, 32
-        JMP NO_CHANGE
+        JMP UPDATE
         
         CHECK_LOWER:
-            CMP DL, 97D
-            JL NO_CHANGE
+            CMP DL, 97
+            JL UPDATE
             CMP DL, 122D
-            JG NO_CHANGE
+            JG UPDATE
             XOR DL, 32
         
-        NO_CHANGE:
+        UPDATE:
             MOV INPUT[DI], DL
             INC DI
             JMP CASE_CHANGE
@@ -68,9 +62,6 @@ MAIN PROC
     LEA DX, INPUT
     MOV AH, 9
     INT 21H
-    
-    MOV AH, 4CH
-    INT 21H 
 
 END MAIN
     
