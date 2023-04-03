@@ -5,16 +5,29 @@
 .DATA   
 
 NEWLINE DB 0AH,0DH,'$' 
-INPUT DB 'ABXYZMNAOPOQRS$'  
-MAX DW 1   
+INPUT DB 50 DUP('$') 
+MAX DW 0   
 INDEX DW 0
 
 .CODE
 
 MAIN PROC
 
-    MOV AX, @DATA
-    MOV DS, AX   
+    MOV AX, DATA
+    MOV DS, AX
+    
+    MOV SI, 0
+    MOV AH, 1    
+                      
+    START_INPUT:
+        INT 21H
+        CMP AL, 0DH
+        JE END_INPUT
+        MOV INPUT+SI, AL
+        INC SI
+        JMP START_INPUT
+    
+    END_INPUT:   
     
     MOV SI, 0
     MOV CX, 1     
@@ -43,9 +56,7 @@ MAIN PROC
                 MOV BX, SI
                 SUB BX, CX
                 MOV INDEX, BX  
-                INC SI 
-                MOV CX, 1
-                JMP CHECK
+                JMP CHECK_MAX
                 
     EXIT_CHECK:
     
@@ -59,9 +70,13 @@ MAIN PROC
         SUB BX, CX
         MOV INDEX, BX  
      
-    EXIT: 
+    EXIT:   
+        MOV AH, 9
+        LEA DX, NEWLINE
+        INT 21H
+        
         MOV DX, MAX 
-        ADD DL, '0'
+        ADD DL, 48
         MOV AH, 2
         INT 21H   
         
