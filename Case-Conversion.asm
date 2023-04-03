@@ -20,7 +20,6 @@ MAIN PROC
     MOV AX, @DATA
     MOV DS, AX
     
-    MOV AH, 1
     MOV SI, 0   
       
     STRING_INPUT:
@@ -28,7 +27,7 @@ MAIN PROC
         INT 21H
         CMP AL, 0DH
         JE END_STRING_INPUT
-        MOV INPUT+SI, AL
+        MOV INPUT[SI], AL
         INC SI
         JMP STRING_INPUT   
         

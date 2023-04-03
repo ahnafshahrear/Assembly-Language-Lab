@@ -49,7 +49,7 @@
 #### 2(a) Find Capital Letter ✓
 - **Write an assembly language program to implement a searching program that will read a string (a line of letters of English alphabet) as input and then find out the first capital letter which is occurred first and last capital letter which is occurred last in the alphabetical order as output. Your program will display a message with "No Capitals" when there is no capital letter in the string. Your program must contain necessary messages for formatted input and output.**
 
-#### 2(b) Longest Alphabetical Sequence
+#### 2(b) Longest Alphabetical Sequence ✓
 - **Write an assembly language program to implement a searching program that will read a string (a word of letters of English alphabet either all in uppercase or all in lowercase but not both) as input and then find out the longest sequence of letters in the word in alphabetical order. Your program must contain necessary messages for formatted input and output.**
 
 #### 2(c) Check Substring ✓
