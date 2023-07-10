@@ -17,7 +17,6 @@ MAIN PROC
       
     MOV AH, 1
     INT 21H      
-    
     MOV SI, 0
     MOV CX, 4
     
