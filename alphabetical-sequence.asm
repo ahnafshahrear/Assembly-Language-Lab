@@ -23,7 +23,7 @@ MAIN PROC
         INT 21H
         CMP AL, 0DH
         JE END_INPUT
-        MOV INPUT+SI, AL
+        MOV INPUT[SI], AL
         INC SI
         JMP START_INPUT
     
@@ -95,5 +95,4 @@ MAIN PROC
             INC SI
             LOOP SEQ_OUTPUT
         
-END MAIN
-        
+END MAIN       
