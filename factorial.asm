@@ -15,8 +15,7 @@ MAIN PROC
                                              
     MOV AH, 1
     INT 21H
-    
-    SUB AL, 48      
+    SUB AL, '0'      
     MOV BL, AL
               
     MOV AH, 9
@@ -33,7 +32,7 @@ MAIN PROC
         JMP FACTORIAL
     
     OUTPUT: 
-        ADD AL, 48
+        ADD AL, '0'
         MOV DL, AL
         MOV AH, 2
         INT 21H
