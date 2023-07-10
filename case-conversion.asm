@@ -14,10 +14,10 @@ MAIN PROC
     MOV AX, DATA
     MOV DS, AX
     
-    MOV SI, 0   
+    MOV SI, 0
+    MOV AH, 1   
       
     STRING_INPUT:
-        MOV AH, 1
         INT 21H
         CMP AL, 0DH
         JE END_STRING_INPUT
@@ -48,7 +48,7 @@ MAIN PROC
         CHECK_LOWER:
             CMP DL, 97
             JL UPDATE
-            CMP DL, 122D
+            CMP DL, 122
             JG UPDATE
             XOR DL, 32
         
@@ -64,4 +64,3 @@ MAIN PROC
     INT 21H
 
 END MAIN
-    
