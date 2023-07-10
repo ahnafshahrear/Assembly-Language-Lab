@@ -6,7 +6,6 @@
  
 PRIME_MSG DB 0AH,0DH,'PRIME','$'   
 NOT_PRIME_MSG DB 0AH,0DH,'NOT PRIME','$' 
-PRIMES DB '2357'
 
 .CODE
 
@@ -17,24 +16,33 @@ MAIN PROC
       
     MOV AH, 1
     INT 21H      
-    MOV SI, 0
-    MOV CX, 4
+    SUB AL, '0'  
+    MOV AH, 0
+    MOV CX, AX
+    MOV BL, AL
+    DEC BL
     
-    CHECK_PRIME:
-        CMP AL, PRIMES[SI]
-        JE PRINT_PRIME
-        INC SI
-        LOOP CHECK_PRIME  
-    
-    LEA DX, NOT_PRIME_MSG
-    MOV AH, 9
-    INT 21H
-    JMP EXIT  
+    CHECK_PRIME: 
+        CMP BL, 1
+        JLE EXIT_CHECK_PRIME:
+        DIV BL
+        CMP AH, 0
+        JE PRINT_NOT_PRIME 
+        MOV AX, CX
+        DEC BL
+        JMP CHECK_PRIME 
         
-    PRINT_PRIME:
-        LEA DX, PRIME_MSG
+    EXIT_CHECK_PRIME:    
+           
+    MOV AH, 9
+    LEA DX, PRIME_MSG
+    INT 21H
+    JMP EXIT
+        
+    PRINT_NOT_PRIME:
         MOV AH, 9
-        INT 21H
+        LEA DX, NOT_PRIME_MSG
+        INT 21H    
 
     EXIT:
              
