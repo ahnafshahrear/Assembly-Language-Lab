@@ -15,9 +15,9 @@ MAIN PROC
     MOV DS, AX        
         
     MOV SI, 0    
+    MOV AH, 1
                       
     START_INPUT:
-        MOV AH, 1
         INT 21H
         CMP AL, 0DH
         JE END_INPUT 
@@ -33,24 +33,23 @@ MAIN PROC
     
     MOV SI, 0
     
-    LOOP1:
+    FIND_LARGE:
         MOV BL, INPUT[SI]   
         CMP BL, '$'
-        JE END_LOOP1:
+        JE END_FIND_LARGE:
         INC SI
         CMP BL, INPUT[0]
         JG UPDATE  
-        JMP LOOP1
+        JMP FIND_LARGE
         
         UPDATE:
             MOV INPUT[0], BL
-            JMP LOOP1      
+            JMP FIND_LARGE      
             
-    END_LOOP1:  
+    END_FIND_LARGE:  
     
     MOV AH, 2
     MOV DL, INPUT[0]
     INT 21H     
         
-END MAIN
-        
+END MAIN       
