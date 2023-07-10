@@ -16,8 +16,7 @@ MAIN PROC
       
     MOV AH, 1
     INT 21H      
-    
-    SUB AL, 48      
+    SUB AL, '0'      
     AND AL, 00000001B
     CMP AL, 0
     JE PRINT_EVEN
