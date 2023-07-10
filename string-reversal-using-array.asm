@@ -9,7 +9,8 @@ NEWLINE DB 0AH,0DH,'$'
 
 .CODE
 
-MAIN PROC
+MAIN PROC   
+    
     MOV AX, DATA
     MOV DS, AX
     
@@ -40,4 +41,3 @@ MAIN PROC
         LOOP PRINT_STRING
         
 END MAIN
-        
