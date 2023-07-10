@@ -57,7 +57,7 @@
 
 ### Title: Counting & Sorting Problems
 
-#### 3(a) Count Vowels, Consonants, Digits & Spaces
+#### 3(a) Count Vowels, Consonants, Digits & Spaces ✓
 - **Write an assembly language program to implement a counting program that will read a string (a line of characters of letters, digits, punctuation symbols, and others) as input and then count the number of Vowels, Consonants, Digits, and Spaces in the string as output. Your program must contain necessary messages for formatted input and output.**
 
 #### 3(b) Sorting String ✓
