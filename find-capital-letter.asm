@@ -18,14 +18,11 @@ MAIN PROC
     MOV DS, AX
     
     MOV AH, 1
-    MOV SI, 0   
       
     STRING_INPUT:
-        MOV AH, 1
         INT 21H
         CMP AL, 0DH
         JE END_STRING_INPUT
-        INC SI
         CMP AL, 65
         JGE CHECK_CAPITAL
         JMP STRING_INPUT 
