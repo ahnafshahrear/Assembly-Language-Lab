@@ -37,5 +37,4 @@ MAIN PROC
         MOV AH, 2
         INT 21H
 
-END MAIN
-    
+END MAIN  
