@@ -65,5 +65,4 @@ MAIN PROC
     LEA DX, INPUT
     INT 21H       
         
-END MAIN
-        
+END MAIN   
