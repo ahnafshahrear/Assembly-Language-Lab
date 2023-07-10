@@ -27,7 +27,7 @@ MAIN PROC
         JE END_STRING_INPUT
         INC SI
         CMP AL, 65
-        JG CHECK_CAPITAL
+        JGE CHECK_CAPITAL
         JMP STRING_INPUT 
         
         CHECK_CAPITAL:
